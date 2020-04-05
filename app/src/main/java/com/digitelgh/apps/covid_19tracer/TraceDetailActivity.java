@@ -1,6 +1,9 @@
 package com.digitelgh.apps.covid_19tracer;
 
 import android.content.Intent;
+import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
 
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.util.Date;
 
 /**
  * An activity representing a single Trace detail screen. This
@@ -23,21 +29,23 @@ import android.view.MenuItem;
  */
 public class TraceDetailActivity extends AppCompatActivity {
 
+    TextView dayCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trace_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+//        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
@@ -66,6 +74,17 @@ public class TraceDetailActivity extends AppCompatActivity {
                     .add(R.id.trace_detail_container, fragment)
                     .commit();
         }
+        // TODO: change this to call from server
+        dayCount = findViewById(R.id.follow_up_day);
+        dayCount.setText("Day 1");
+
+        //
+        TextView dayDate = (TextView) findViewById(R.id.follow_up_date);
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        String strDate = dateFormat.format(date);
+        dayDate.setText("Date: " +strDate);
+
     }
 
     @Override

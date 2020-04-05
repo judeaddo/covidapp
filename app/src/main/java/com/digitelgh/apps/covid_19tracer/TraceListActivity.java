@@ -2,6 +2,9 @@ package com.digitelgh.apps.covid_19tracer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -18,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +35,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -66,7 +71,6 @@ public class TraceListActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-
         if (findViewById(R.id.trace_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
@@ -123,30 +127,6 @@ public class TraceListActivity extends AppCompatActivity {
         getJSON.execute();
     }
 
-//    private void loadIntoListView(String json) throws JSONException {
-//        //creating a json array from the json string
-//        JSONArray jsonArray = new JSONArray(json);
-//
-//        //creating a string array for listview
-//        String[] heroes = new String[jsonArray.length()];
-//
-//        //looping through all the elements in json array
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//
-//            //getting json object from the json array
-//            JSONObject obj = jsonArray.getJSONObject(i);
-//
-//            //getting the name from the json object and putting it inside string array
-//            heroes[i] = obj.getString("f_name");
-//        }
-//
-//        //the array adapter to load data into list
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, heroes);
-//
-//        //attaching adapter to listview
-//        listView.setAdapter(arrayAdapter);
-//    }
-
     private void setupRecyclerView(@NonNull RecyclerView recyclerView, String json) throws JSONException{
         //creating a json array from the json string
         JSONArray jsonArray = new JSONArray(json);
@@ -156,18 +136,12 @@ public class TraceListActivity extends AppCompatActivity {
 
         //looping through all the elements in json array
         for (int i = 0; i < jsonArray.length(); i++) {
-
             //getting json object from the json array
             JSONObject obj = jsonArray.getJSONObject(i);
-
-            //getting the name from the json object and putting it inside string array
-//            heroes[i] = obj.getString("f_name");
             heroes[i] = obj.toString();
-//            res_address[i] = obj.getString("res_address");
         }
 //        String tag = "JSON";
 //        Log.i(tag,json);
-
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, heroes, mTwoPane));
     }
 
@@ -176,13 +150,26 @@ public class TraceListActivity extends AppCompatActivity {
 //        private final List<DummyContent.DummyItem> mValues;
         private final String[] mValues;
         private final boolean mTwoPane;
-        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        private OnItemClickListener mListener;
+
+        public interface OnItemClickListener {
+            void onItemClick(int position);
+            void onFollowUpClickListener(int position);
+        }
+
+        public void setOnItemClickListener(OnItemClickListener listener) {
+            mListener = listener;
+        }
+
+        private final View.OnClickListener mFollowUpButtonOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+                Integer intObj = (Integer) view.getTag();
+                String item = intObj.toString();
+
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(TraceDetailFragment.ARG_ITEM_ID, item.id);
+                    arguments.putString(TraceDetailFragment.ARG_ITEM_ID, item);
                     TraceDetailFragment fragment = new TraceDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
@@ -191,16 +178,38 @@ public class TraceListActivity extends AppCompatActivity {
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, TraceDetailActivity.class);
-                    intent.putExtra(TraceDetailFragment.ARG_ITEM_ID, item.id);
+                    intent.putExtra(TraceDetailFragment.ARG_ITEM_ID, item);
 
                     context.startActivity(intent);
                 }
             }
         };
 
-        SimpleItemRecyclerViewAdapter(TraceListActivity parent,
-                                      String[] items,
-                                      boolean twoPane) {
+        private final View.OnClickListener mContinueTraceButtonOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer intObj = (Integer) view.getTag();
+                String item = intObj.toString();
+
+                if (mTwoPane) {
+                    Bundle arguments = new Bundle();
+                    arguments.putString(ContinueTraceFragment.ARG_ITEM_ID, item);
+                    ContinueTraceFragment fragment = new ContinueTraceFragment();
+                    fragment.setArguments(arguments);
+                    mParentActivity.getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.trace_contacts_container, fragment)
+                            .commit();
+                } else {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, ContinueTraceActivity.class);
+                    intent.putExtra(TraceDetailFragment.ARG_ITEM_ID, item);
+
+                    context.startActivity(intent);
+                }
+            }
+        };
+
+        SimpleItemRecyclerViewAdapter(TraceListActivity parent, String[] items, boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
             mTwoPane = twoPane;
@@ -210,7 +219,7 @@ public class TraceListActivity extends AppCompatActivity {
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.trace_list_content, parent, false);
-            return new ViewHolder(view);
+            return new ViewHolder(view, mListener);
         }
 
         @Override
@@ -221,8 +230,14 @@ public class TraceListActivity extends AppCompatActivity {
                 JSONObject rec = new JSONObject(mValues[position]);
                 holder.mContentView.setText(rec.getString("f_name"));
                 holder.mIdView.setText(rec.getString("res_address"));
-                holder.itemView.setTag(position);
-                holder.itemView.setOnClickListener(mOnClickListener);
+//                holder.itemView.setTag(position+1);
+//                holder.itemView.setOnClickListener(mOnClickListener);
+                // Follow up button handlers
+                holder.mFollowUpButton.setTag(position+1);
+                holder.mFollowUpButton.setOnClickListener(mFollowUpButtonOnClickListener);
+                // Continue trace button handlers
+                holder.mContinueTraceButton.setTag(position+1);
+                holder.mContinueTraceButton.setOnClickListener(mContinueTraceButtonOnClickListener);
             } catch (Throwable t) {
                 Log.e("COVID-19", "Could not parse malformed JSON: \"" + mValues[position] + "\"");
             }
@@ -236,11 +251,15 @@ public class TraceListActivity extends AppCompatActivity {
         class ViewHolder extends RecyclerView.ViewHolder {
             final TextView mIdView;
             final TextView mContentView;
+            final Button mContinueTraceButton;
+            final Button mFollowUpButton;
 
-            ViewHolder(View view) {
+            ViewHolder(View view, final OnItemClickListener listener) {
                 super(view);
                 mIdView = (TextView) view.findViewById(R.id.id_text);
                 mContentView = (TextView) view.findViewById(R.id.content);
+                mContinueTraceButton = (Button) view.findViewById(R.id.continue_trace_button);
+                mFollowUpButton = (Button) view.findViewById(R.id.follow_up_button);
             }
         }
     }

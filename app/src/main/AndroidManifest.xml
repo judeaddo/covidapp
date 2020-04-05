@@ -28,6 +28,15 @@
                 android:value="com.digitelgh.apps.covid_19tracer.TraceListActivity" />
         </activity>
         <activity
+            android:name=".ContinueTraceActivity"
+            android:label="@string/title_continue_trace"
+            android:parentActivityName=".ContinueTraceActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.digitelgh.apps.covid_19tracer.ContinueTraceActivity" />
+        </activity>
+        <activity
             android:name=".LoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"

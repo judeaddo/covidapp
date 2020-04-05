@@ -1,12 +1,6 @@
 package com.digitelgh.apps.covid_19tracer;
 
-import android.app.Activity;
 import android.os.Bundle;
-
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +8,15 @@ import android.widget.TextView;
 
 import com.digitelgh.apps.covid_19tracer.dummy.DummyContent;
 
+import androidx.fragment.app.Fragment;
+
 /**
  * A fragment representing a single Trace detail screen.
  * This fragment is either contained in a {@link TraceListActivity}
  * in two-pane mode (on tablets) or a {@link TraceDetailActivity}
  * on handsets.
  */
-public class TraceDetailFragment extends Fragment {
+public class ContinueTraceFragment extends Fragment {
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -36,7 +32,7 @@ public class TraceDetailFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public TraceDetailFragment() {
+    public ContinueTraceFragment() {
     }
 
     @Override
@@ -60,11 +56,11 @@ public class TraceDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.trace_detail, container, false);
+        View rootView = inflater.inflate(R.layout.continue_fragment, container, false);
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.trace_detail)).setText(mItem.details);
+            ((TextView) rootView.findViewById(R.id.continue_trace_fragment)).setText(mItem.details);
         }
 
         return rootView;

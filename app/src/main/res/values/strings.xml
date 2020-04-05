@@ -95,6 +95,9 @@
     <string name="q32">Isolation decision</string>
     <string name="q33">Quarantine completion date</string>
 
+    <string name="header_follow_up_page">Symptoms</string>
+    <string name="remark_follow_up_page">Remarks</string>
+
     <string name="phone">Phone number</string>
     <string name="pin">Pin</string>
     <string name="login">Login</string>
@@ -112,6 +115,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_trace_list">Traces</string>
     <string name="title_trace_detail">Trace Detail</string>
+    <string name="title_continue_trace">Continue Trace</string>
     <string-array name="gender">
         <item></item>
         <item>Male</item>
@@ -380,4 +384,8 @@
         <item>Self isolation</item>
         <item>Not required</item>
     </string-array>
+
+    <!--EXTRAS-->
+    <string name="follow_up_day_label">Day 1</string>
+    <string name="follow_up_today_date">Date: </string>
 </resources>
