@@ -33,6 +33,7 @@
     <!-- urls -->
     <string name="save_trace_url">http://covidapp.digitelgh.com/api/android/save-trace</string>
     <string name="signin_url">http://covidapp.digitelgh.com/api/signin</string>
+    <string name="followup_save_url">http://d6eb831b.ngrok.io/api/followup</string>
 
     <!-- notification -->
     <string name="channel_name">NOTIFICATION_NAME</string>

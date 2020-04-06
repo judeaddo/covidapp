@@ -90,11 +90,11 @@
                             android:text="Fever (>38°C)" />
 
                         <CheckBox
-                            android:id="@+id/sour_throat"
+                            android:id="@+id/sore_throat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/abel"
-                            android:text="Sour Throat" />
+                            android:text="Sore Throat" />
 
                         <CheckBox
                             android:id="@+id/cough"
@@ -104,14 +104,14 @@
                             android:text="Cough" />
 
                         <CheckBox
-                            android:id="@+id/runnynose"
+                            android:id="@+id/runny_nose"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/abel"
                             android:text="Runny nose" />
 
                         <CheckBox
-                            android:id="@+id/breath"
+                            android:id="@+id/shortness_of_breath"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/abel"
