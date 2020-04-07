@@ -2,30 +2,21 @@ package com.digitelgh.apps.covid_19tracer;
 
 import android.content.Context;
 import android.content.Intent;
-import android.icu.text.DateFormat;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.digitelgh.apps.covid_19tracer.dummy.DummyContent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,8 +26,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Date;
-import java.util.List;
 
 /**
  * An activity representing a list of Traces. This activity
@@ -79,7 +68,7 @@ public class TraceListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        getJSON("http://covidapp.digitelgh.com/api/traces");
+        getJSON(getResources().getString(R.string.fetch_traces_url));
     }
 
     private void getJSON(final String urlWebService) {
@@ -131,18 +120,18 @@ public class TraceListActivity extends AppCompatActivity {
         //creating a json array from the json string
         JSONArray jsonArray = new JSONArray(json);
         //creating a string array for listview
-        String[] heroes = new String[jsonArray.length()];
-        String[] res_address = new String[jsonArray.length()];
-
+        String[] records = new String[jsonArray.length()];
         //looping through all the elements in json array
         for (int i = 0; i < jsonArray.length(); i++) {
             //getting json object from the json array
             JSONObject obj = jsonArray.getJSONObject(i);
-            heroes[i] = obj.toString();
+            records[i] = obj.toString();
         }
 //        String tag = "JSON";
 //        Log.i(tag,json);
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, heroes, mTwoPane));
+        recyclerView.addItemDecoration(new DividerItemDecoration(TraceListActivity.this,
+                DividerItemDecoration.VERTICAL));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, records, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
@@ -157,35 +146,7 @@ public class TraceListActivity extends AppCompatActivity {
             void onFollowUpClickListener(int position);
         }
 
-        public void setOnItemClickListener(OnItemClickListener listener) {
-            mListener = listener;
-        }
-
-        private final View.OnClickListener mFollowUpButtonOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Integer intObj = (Integer) view.getTag();
-                String item = intObj.toString();
-
-                if (mTwoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(TraceDetailFragment.ARG_ITEM_ID, item);
-                    TraceDetailFragment fragment = new TraceDetailFragment();
-                    fragment.setArguments(arguments);
-                    mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.trace_detail_container, fragment)
-                            .commit();
-                } else {
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, TraceDetailActivity.class);
-                    intent.putExtra(TraceDetailFragment.ARG_ITEM_ID, item);
-
-                    context.startActivity(intent);
-                }
-            }
-        };
-
-        private final View.OnClickListener mContinueTraceButtonOnClickListener = new View.OnClickListener() {
+        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Integer intObj = (Integer) view.getTag();
@@ -202,6 +163,53 @@ public class TraceListActivity extends AppCompatActivity {
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, ContinueTraceActivity.class);
+                    intent.putExtra(TraceDetailFragment.ARG_ITEM_ID, item);
+
+                    context.startActivity(intent);
+                }
+            }
+        };
+
+        private final View.OnClickListener mFollowUpButtonOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer intObj = (Integer) view.getTag();
+                String item = intObj.toString();
+
+                if (mTwoPane) {
+                    Bundle arguments = new Bundle();
+                    arguments.putString(FollowUpFormFragment.ARG_ITEM_ID, item);
+                    FollowUpFormFragment fragment = new FollowUpFormFragment();
+                    fragment.setArguments(arguments);
+                    mParentActivity.getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.follow_up_form_container, fragment)
+                            .commit();
+                } else {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, FollowUpActivity.class);
+                    intent.putExtra(FollowUpFormFragment.ARG_ITEM_ID, item);
+                    context.startActivity(intent);
+                }
+            }
+        };
+
+        private final View.OnClickListener mManageContactsButtonOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer intObj = (Integer) view.getTag();
+                String item = intObj.toString();
+
+                if (mTwoPane) {
+                    Bundle arguments = new Bundle();
+                    arguments.putString(ContinueTraceFragment.ARG_ITEM_ID, item);
+                    ContinueTraceFragment fragment = new ContinueTraceFragment();
+                    fragment.setArguments(arguments);
+                    mParentActivity.getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.trace_contacts_container, fragment)
+                            .commit();
+                } else {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, ContactsListActivity.class);
                     intent.putExtra(TraceDetailFragment.ARG_ITEM_ID, item);
 
                     context.startActivity(intent);
@@ -230,14 +238,15 @@ public class TraceListActivity extends AppCompatActivity {
                 JSONObject rec = new JSONObject(mValues[position]);
                 holder.mContentView.setText(rec.getString("f_name"));
                 holder.mIdView.setText(rec.getString("res_address"));
-//                holder.itemView.setTag(position+1);
-//                holder.itemView.setOnClickListener(mOnClickListener);
+
+                holder.itemView.setTag(position+1);
+                holder.itemView.setOnClickListener(mOnClickListener);
                 // Follow up button handlers
                 holder.mFollowUpButton.setTag(position+1);
                 holder.mFollowUpButton.setOnClickListener(mFollowUpButtonOnClickListener);
                 // Continue trace button handlers
-                holder.mContinueTraceButton.setTag(position+1);
-                holder.mContinueTraceButton.setOnClickListener(mContinueTraceButtonOnClickListener);
+                holder.mManageContactsButton.setTag(position+1);
+                holder.mManageContactsButton.setOnClickListener(mManageContactsButtonOnClickListener);
             } catch (Throwable t) {
                 Log.e("COVID-19", "Could not parse malformed JSON: \"" + mValues[position] + "\"");
             }
@@ -251,14 +260,14 @@ public class TraceListActivity extends AppCompatActivity {
         class ViewHolder extends RecyclerView.ViewHolder {
             final TextView mIdView;
             final TextView mContentView;
-            final Button mContinueTraceButton;
+            final Button mManageContactsButton;
             final Button mFollowUpButton;
 
             ViewHolder(View view, final OnItemClickListener listener) {
                 super(view);
                 mIdView = (TextView) view.findViewById(R.id.id_text);
                 mContentView = (TextView) view.findViewById(R.id.content);
-                mContinueTraceButton = (Button) view.findViewById(R.id.continue_trace_button);
+                mManageContactsButton = (Button) view.findViewById(R.id.continue_trace_button);
                 mFollowUpButton = (Button) view.findViewById(R.id.follow_up_button);
             }
         }

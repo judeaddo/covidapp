@@ -30,7 +30,7 @@ public class FullscreenActivity extends AppCompatActivity {
 
     private View mContentView;
     private static String CHANNEL_ID = "901";
-    Button btnStart, btnContinue;
+    Button btnStart, btnContinue, btnAssignments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +50,17 @@ public class FullscreenActivity extends AppCompatActivity {
         scheduleJob();
         createNotificationChannel();
 
-
+        btnAssignments = findViewById(R.id.button3);
         btnStart = findViewById(R.id.start);
         btnContinue = findViewById(R.id.continue_trace);
 
+        btnAssignments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(FullscreenActivity.this, AssignmentsActivity.class);
+                startActivity(i);
+            }
+        });
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

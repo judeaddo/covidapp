@@ -19,9 +19,26 @@
             android:label="@string/title_trace_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".ContactsListActivity"
+            android:label="@string/title_contacts_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".AssignmentsActivity"
+            android:label="@string/title_assignments_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".TraceDetailActivity"
             android:label="@string/title_trace_detail"
             android:parentActivityName=".TraceListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.digitelgh.apps.covid_19tracer.TraceListActivity" />
+        </activity>
+        <activity
+            android:name=".FollowUpActivity"
+            android:label="@string/title_fill_followup_form"
+            android:parentActivityName=".FollowUpActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -34,7 +51,16 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.digitelgh.apps.covid_19tracer.ContinueTraceActivity" />
+                android:value="com.digitelgh.apps.covid_19tracer.TraceListActivity" />
+        </activity>
+        <activity
+            android:name=".ContactFormActivity"
+            android:label="@string/title_contact_form"
+            android:parentActivityName=".ContactFormActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.digitelgh.apps.covid_19tracer.ContactsListActivity" />
         </activity>
         <activity
             android:name=".LoginActivity"

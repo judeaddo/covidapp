@@ -10,7 +10,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context=".TraceListActivity">
+    tools:context=".AssignmentsActivity">
 
     <!--
     This layout is a two-pane layout for the Traces master/detail flow.
@@ -31,7 +31,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.digitelgh.apps.covid_19tracer.TraceListActivity"
+        tools:context="com.digitelgh.apps.covid_19tracer.AssignmentsActivity"
         tools:listitem="@layout/trace_list_content" />
 
 </LinearLayout>

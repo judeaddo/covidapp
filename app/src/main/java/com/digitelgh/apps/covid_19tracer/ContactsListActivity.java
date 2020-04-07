@@ -4,19 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +23,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.RecyclerView;
+
 /**
  * An activity representing a list of Traces. This activity
  * has different presentations for handset and tablet-size devices. On
@@ -35,7 +37,7 @@ import java.net.URL;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class TraceListActivity extends AppCompatActivity {
+public class ContactsListActivity extends AppCompatActivity {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -46,21 +48,22 @@ public class TraceListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trace_list);
+        setContentView(R.layout.activity_contacts_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-        if (findViewById(R.id.trace_detail_container) != null) {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ContactsListActivity.this, ContactFormActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        if (findViewById(R.id.contacts_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
@@ -68,7 +71,7 @@ public class TraceListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        getJSON(getResources().getString(R.string.fetch_traces_url));
+        getJSON(getResources().getString(R.string.fetch_contacts_url));
     }
 
     private void getJSON(final String urlWebService) {
@@ -129,13 +132,13 @@ public class TraceListActivity extends AppCompatActivity {
         }
 //        String tag = "JSON";
 //        Log.i(tag,json);
-        recyclerView.addItemDecoration(new DividerItemDecoration(TraceListActivity.this,
+        recyclerView.addItemDecoration(new DividerItemDecoration(ContactsListActivity.this,
                 DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, records, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-        private final TraceListActivity mParentActivity;
+        private final ContactsListActivity mParentActivity;
 //        private final List<DummyContent.DummyItem> mValues;
         private final String[] mValues;
         private final boolean mTwoPane;
@@ -146,78 +149,31 @@ public class TraceListActivity extends AppCompatActivity {
             void onFollowUpClickListener(int position);
         }
 
-        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Integer intObj = (Integer) view.getTag();
-                String item = intObj.toString();
+//        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Integer intObj = (Integer) view.getTag();
+//                String item = intObj.toString();
+//
+//                if (mTwoPane) {
+//                    Bundle arguments = new Bundle();
+//                    arguments.putString(ContactFormFragment.ARG_ITEM_ID, item);
+//                    ContactFormFragment fragment = new ContactFormFragment();
+//                    fragment.setArguments(arguments);
+//                    mParentActivity.getSupportFragmentManager().beginTransaction()
+//                            .replace(R.id.trace_contacts_container, fragment)
+//                            .commit();
+//                } else {
+//                    Context context = view.getContext();
+//                    Intent intent = new Intent(context, ContactFormActivity.class);
+//                    intent.putExtra(TraceDetailFragment.ARG_ITEM_ID, item);
+//
+//                    context.startActivity(intent);
+//                }
+//            }
+//        };
 
-                if (mTwoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(ContinueTraceFragment.ARG_ITEM_ID, item);
-                    ContinueTraceFragment fragment = new ContinueTraceFragment();
-                    fragment.setArguments(arguments);
-                    mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.trace_contacts_container, fragment)
-                            .commit();
-                } else {
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, ContinueTraceActivity.class);
-                    intent.putExtra(TraceDetailFragment.ARG_ITEM_ID, item);
-
-                    context.startActivity(intent);
-                }
-            }
-        };
-
-        private final View.OnClickListener mFollowUpButtonOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Integer intObj = (Integer) view.getTag();
-                String item = intObj.toString();
-
-                if (mTwoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(FollowUpFormFragment.ARG_ITEM_ID, item);
-                    FollowUpFormFragment fragment = new FollowUpFormFragment();
-                    fragment.setArguments(arguments);
-                    mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.follow_up_form_container, fragment)
-                            .commit();
-                } else {
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, FollowUpActivity.class);
-                    intent.putExtra(FollowUpFormFragment.ARG_ITEM_ID, item);
-                    context.startActivity(intent);
-                }
-            }
-        };
-
-        private final View.OnClickListener mManageContactsButtonOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Integer intObj = (Integer) view.getTag();
-                String item = intObj.toString();
-
-                if (mTwoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(ContinueTraceFragment.ARG_ITEM_ID, item);
-                    ContinueTraceFragment fragment = new ContinueTraceFragment();
-                    fragment.setArguments(arguments);
-                    mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.trace_contacts_container, fragment)
-                            .commit();
-                } else {
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, ContinueTraceActivity.class);
-                    intent.putExtra(TraceDetailFragment.ARG_ITEM_ID, item);
-
-                    context.startActivity(intent);
-                }
-            }
-        };
-
-        SimpleItemRecyclerViewAdapter(TraceListActivity parent, String[] items, boolean twoPane) {
+        SimpleItemRecyclerViewAdapter(ContactsListActivity parent, String[] items, boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
             mTwoPane = twoPane;
@@ -226,7 +182,7 @@ public class TraceListActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.trace_list_content, parent, false);
+                    .inflate(R.layout.contact_list_content, parent, false);
             return new ViewHolder(view, mListener);
         }
 
@@ -237,16 +193,12 @@ public class TraceListActivity extends AppCompatActivity {
             try {
                 JSONObject rec = new JSONObject(mValues[position]);
                 holder.mContentView.setText(rec.getString("f_name"));
-                holder.mIdView.setText(rec.getString("res_address"));
-
-                holder.itemView.setTag(position+1);
-                holder.itemView.setOnClickListener(mOnClickListener);
-                // Follow up button handlers
-                holder.mFollowUpButton.setTag(position+1);
-                holder.mFollowUpButton.setOnClickListener(mFollowUpButtonOnClickListener);
-                // Continue trace button handlers
-                holder.mManageContactsButton.setTag(position+1);
-                holder.mManageContactsButton.setOnClickListener(mManageContactsButtonOnClickListener);
+                holder.mIdView.setText(rec.getString("phone"));
+                holder.mContactStateView.setText(rec.getString("state"));
+                holder.mContactRegionView.setText(rec.getString("region"));
+//                TODO: Come back to this later
+//                holder.itemView.setTag(position+1);
+//                holder.itemView.setOnClickListener(mOnClickListener);
             } catch (Throwable t) {
                 Log.e("COVID-19", "Could not parse malformed JSON: \"" + mValues[position] + "\"");
             }
@@ -260,15 +212,14 @@ public class TraceListActivity extends AppCompatActivity {
         class ViewHolder extends RecyclerView.ViewHolder {
             final TextView mIdView;
             final TextView mContentView;
-            final Button mManageContactsButton;
-            final Button mFollowUpButton;
-
+            final TextView mContactRegionView;
+            final TextView mContactStateView;
             ViewHolder(View view, final OnItemClickListener listener) {
                 super(view);
                 mIdView = (TextView) view.findViewById(R.id.id_text);
                 mContentView = (TextView) view.findViewById(R.id.content);
-                mManageContactsButton = (Button) view.findViewById(R.id.continue_trace_button);
-                mFollowUpButton = (Button) view.findViewById(R.id.follow_up_button);
+                mContactRegionView = (TextView) view.findViewById(R.id.contact_region_view);
+                mContactStateView = (TextView) view.findViewById(R.id.contact_state_view);
             }
         }
     }

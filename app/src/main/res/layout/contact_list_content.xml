@@ -25,17 +25,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
-            android:id="@+id/continue_trace_button"
+        <TextView
+            android:id="@+id/contact_state_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin"
             android:layout_weight="1"
-            android:text="Manage Contacts" />
-        <Button
-            android:id="@+id/follow_up_button"
+            android:text="" />
+        <TextView
+            android:id="@+id/contact_region_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin"
             android:layout_weight="1"
-            android:text="Follow Ups" />
+            android:text="" />
     </LinearLayout>
 </LinearLayout>

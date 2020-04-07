@@ -20,22 +20,6 @@
         android:layout_marginTop="0dp"
         android:layout_marginLeft="@dimen/text_margin"
         android:layout_marginBottom="5dp"
+        android:textColor="@color/red"
         android:textAppearance="?attr/textAppearanceListItem" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/continue_trace_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add Contacts" />
-        <Button
-            android:id="@+id/follow_up_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Follow Ups" />
-    </LinearLayout>
 </LinearLayout>

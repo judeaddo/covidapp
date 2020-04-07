@@ -12,7 +12,9 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.digitelgh.apps.covid_19tracer.service.NetworkSchedulerService;
 
@@ -24,7 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class FullscreenActivity extends AppCompatActivity {
+public class ContactFormActivity extends AppCompatActivity {
     SharedPreferences appPrefs;
     private String userId, userEmail, userPIN, userName, userToken;
 
@@ -35,10 +37,19 @@ public class FullscreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fullscreen);
+        setContentView(R.layout.activity_contact_form);
         mContentView = findViewById(R.id.fullscreen_content);
 
-        hide();
+        Spinner staticSpinner = (Spinner) findViewById(R.id.contact_form_region);
+
+        // Create an ArrayAdapter using the string array and a default spinner
+        ArrayAdapter<CharSequence> staticAdapter = ArrayAdapter
+                .createFromResource(this, R.array.region_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        staticSpinner.setAdapter(staticAdapter);
+//        hide();
 
         appPrefs = getSharedPreferences(getString(R.string.pref_key), MODE_PRIVATE);
         userId = appPrefs.getString(getString(R.string.user_id), null);
@@ -50,31 +61,6 @@ public class FullscreenActivity extends AppCompatActivity {
         scheduleJob();
         createNotificationChannel();
 
-        btnAssignments = findViewById(R.id.button3);
-        btnStart = findViewById(R.id.start);
-        btnContinue = findViewById(R.id.continue_trace);
-
-        btnAssignments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(FullscreenActivity.this, AssignmentsActivity.class);
-                startActivity(i);
-            }
-        });
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(FullscreenActivity.this, NewTrace.class);
-                startActivity(i);
-            }
-        });
-        btnContinue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(FullscreenActivity.this, TraceListActivity.class);
-                startActivity(i);
-            }
-        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -123,16 +109,16 @@ public class FullscreenActivity extends AppCompatActivity {
     private void hide() {
         // Hide UI first
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
+//        if (actionBar != null) {
+//            actionBar.hide();
+//        }
 
-        mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+//        mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
+//                | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+//                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
     }
 }

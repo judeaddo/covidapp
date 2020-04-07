@@ -40,9 +40,9 @@ public class ContinueTraceActivity extends AppCompatActivity {
 //            // Create the detail fragment and add it to the activity
 //            // using a fragment transaction.
 //            Bundle arguments = new Bundle();
-//            arguments.putString(TraceDetailFragment.ARG_ITEM_ID,
-//                    getIntent().getStringExtra(TraceDetailFragment.ARG_ITEM_ID));
-//            TraceDetailFragment fragment = new TraceDetailFragment();
+//            arguments.putString(ContinueTraceFragment.ARG_ITEM_ID,
+//                    getIntent().getStringExtra(ContinueTraceFragment.ARG_ITEM_ID));
+//            ContinueTraceFragment fragment = new ContinueTraceFragment();
 //            fragment.setArguments(arguments);
 //            getSupportFragmentManager().beginTransaction()
 //                    .add(R.id.trace_contacts_container, fragment)
@@ -60,7 +60,7 @@ public class ContinueTraceActivity extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            navigateUpTo(new Intent(this, TraceListActivity.class));
+            navigateUpTo(new Intent(this, ContactsListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -9,7 +9,7 @@
     tools:ignore="MergeRootFrame">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/trace_detail_container"
+        android:id="@+id/contact_assignment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" >

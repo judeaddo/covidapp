@@ -30,12 +30,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Continue Trace" />
+            android:text="Manage Contacts" />
         <Button
             android:id="@+id/follow_up_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Follow Up" />
+            android:text="Follow Ups" />
     </LinearLayout>
 </LinearLayout>

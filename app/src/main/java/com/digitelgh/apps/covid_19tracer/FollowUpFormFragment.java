@@ -13,10 +13,10 @@ import androidx.fragment.app.Fragment;
 /**
  * A fragment representing a single Trace detail screen.
  * This fragment is either contained in a {@link TraceListActivity}
- * in two-pane mode (on tablets) or a {@link TraceDetailActivity}
+ * in two-pane mode (on tablets) or a {@link FollowUpActivity}
  * on handsets.
  */
-public class FollowUpDetailFragment extends Fragment {
+public class FollowUpFormFragment extends Fragment {
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -32,7 +32,7 @@ public class FollowUpDetailFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public FollowUpDetailFragment() {
+    public FollowUpFormFragment() {
     }
 
     @Override
@@ -56,11 +56,11 @@ public class FollowUpDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.trace_detail, container, false);
+        View rootView = inflater.inflate(R.layout.followup_form, container, false);
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.trace_detail)).setText(mItem.details);
+            ((TextView) rootView.findViewById(R.id.follow_up_form)).setText(mItem.details);
         }
 
         return rootView;

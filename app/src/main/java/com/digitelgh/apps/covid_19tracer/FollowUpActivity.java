@@ -1,11 +1,16 @@
 package com.digitelgh.apps.covid_19tracer;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -19,37 +24,17 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.widget.Toolbar;
-
-import android.os.StrictMode;
-import android.util.Log;
-import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.ActionBar;
-import libs.mjn.prettydialog.PrettyDialog;
-
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * An activity representing a single Trace detail screen. This
@@ -57,7 +42,7 @@ import java.util.Map;
  * item details are presented side-by-side with a list of items
  * in a {@link TraceListActivity}.
  */
-public class TraceDetailActivity extends AppCompatActivity {
+public class FollowUpActivity extends AppCompatActivity {
 
     TextView dayCount;
 
@@ -88,7 +73,7 @@ public class TraceDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trace_detail);
+        setContentView(R.layout.activity_followup_form);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
 //        setSupportActionBar(toolbar);
 
@@ -111,12 +96,12 @@ public class TraceDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(TraceDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(TraceDetailFragment.ARG_ITEM_ID));
-            TraceDetailFragment fragment = new TraceDetailFragment();
+            arguments.putString(FollowUpFormFragment.ARG_ITEM_ID,getIntent()
+                    .getStringExtra(FollowUpFormFragment.ARG_ITEM_ID));
+            FollowUpFormFragment fragment = new FollowUpFormFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.trace_detail_container, fragment)
+                    .add(R.id.follow_up_form_container, fragment)
                     .commit();
         }
         // TODO: change this to call from server
@@ -186,7 +171,7 @@ public class TraceDetailActivity extends AppCompatActivity {
                                             @Override
                                             public void onDismissed(Snackbar snackbar, int event) {
                                                 super.onDismissed(snackbar, event);
-                                                Intent i = new Intent(TraceDetailActivity.this, TraceListActivity.class);
+                                                Intent i = new Intent(FollowUpActivity.this, TraceListActivity.class);
                                                 startActivity(i);
                                                 finish();
                                             }

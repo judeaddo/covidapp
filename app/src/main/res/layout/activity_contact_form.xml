@@ -4,119 +4,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EAEEF0"
-    tools:context=".FullscreenActivity">
+    tools:context=".ContactFormActivity"
+    tools:ignore="MergeRootFrame">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.86"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/main" />
-
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
     <LinearLayout
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            app:srcCompat="@drawable/coa" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+            <!--<TextView-->
+                <!--android:id="@+id/follow_up_day"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:fontFamily="@font/abel"-->
+                <!--android:padding="30dp"-->
+                <!--android:text="@string/follow_up_day_label"-->
+                <!--android:textColor="#000000"-->
+                <!--android:textSize="21sp" />-->
+            <!--<TextView-->
+                <!--android:id="@+id/follow_up_date"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:fontFamily="@font/abel"-->
+                <!--android:padding="30dp"-->
+                <!--android:text="@string/follow_up_today_date"-->
+                <!--android:textAlignment="textEnd"-->
+                <!--android:textColor="#000000"-->
+                <!--android:textSize="21sp" />-->
+        <!--</LinearLayout>-->
 
         <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:background="@drawable/yellowoutline_btn_bg"
-            android:fontFamily="@font/dosis_semibold"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/app_name"
-            android:textColor="@color/orangeYellow"
-            android:textSize="30sp" />
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="150dp"
+            android:background="@drawable/section_bg"
+            android:fontFamily="@font/sintony_bold"
+            android:gravity="center|left"
+            android:layout_marginTop="60dp"
+            android:paddingStart="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/header_add_contacts_page"
+            android:textAllCaps="true"
+            android:textColor="#555555"
+            android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/green_btn_bg"
-            android:fontFamily="@font/baloo_thambi"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="My Assignments"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:orientation="vertical">-->
+                <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:stretchColumns="1"
+                    android:orientation="vertical">
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_marginBottom="15dip">
+                        <EditText
+                            android:id="@+id/contact_form_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Name"
+                            android:inputType="textPersonName"
+                            android:text="" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_marginBottom="15dip">
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/green_btn_bg"
-            android:fontFamily="@font/baloo_thambi"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="Testing Centres"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:visibility="gone" />
+                        <EditText
+                            android:id="@+id/contact_form_"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Phone Number"
+                            android:inputType="phone"
+                            android:text="" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_marginBottom="15dip">
 
-        <Button
-            android:id="@+id/start"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/yellow_btn_bg"
-            android:fontFamily="@font/baloo_thambi"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="Start New Trace"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+                        <Spinner
+                            android:id="@+id/contact_form_region"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="20dp" />
+                    </TableRow>
+                </TableLayout>
+                <!--</LinearLayout>-->
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/continue_trace"
-            android:layout_width="300dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp">
+                <TextView
+                    android:id="@+id/testedLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:fontFamily="@font/abel"
+                    android:text="@string/remark_follow_up_page"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+                <EditText
+                    android:id="@+id/remarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:background="@drawable/yellowoutline_btn_bg"
-            android:fontFamily="@font/baloo_thambi"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="All Traces"
-            android:textAllCaps="false"
-            android:textColor="#555"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/blue_btn_bg"
-            android:fontFamily="@font/baloo_thambi"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="Health Guidelines"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
-
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/submit_follow_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Submit" />
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

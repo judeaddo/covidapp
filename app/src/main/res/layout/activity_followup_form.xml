@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".TraceDetailActivity"
+    tools:context=".FollowUpActivity"
     tools:ignore="MergeRootFrame">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/trace_detail_container"
+        android:id="@+id/follow_up_form_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" >

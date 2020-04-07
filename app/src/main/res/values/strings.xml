@@ -33,7 +33,10 @@
     <!-- urls -->
     <string name="save_trace_url">http://covidapp.digitelgh.com/api/android/save-trace</string>
     <string name="signin_url">http://covidapp.digitelgh.com/api/signin</string>
-    <string name="followup_save_url">http://d6eb831b.ngrok.io/api/followup</string>
+    <string name="followup_save_url">http://contacttracingghana.com/api/followup</string>
+    <string name="fetch_traces_url">"http://contacttracingghana.com/api/traces"</string>
+    <string name="fetch_assignments_url">"http://contacttracingghana.com/api/assignments"</string>
+    <string name="fetch_contacts_url">"http://contacttracingghana.com/api/contacts"</string>
 
     <!-- notification -->
     <string name="channel_name">NOTIFICATION_NAME</string>
@@ -99,6 +102,8 @@
     <string name="header_follow_up_page">Symptoms</string>
     <string name="remark_follow_up_page">Remarks</string>
 
+    <string name="header_add_contacts_page">Add New Contact</string>
+
     <string name="phone">Phone number</string>
     <string name="pin">Pin</string>
     <string name="login">Login</string>
@@ -114,9 +119,14 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="title_trace_list">Traces</string>
+    <string name="title_trace_list">My Previous Traces</string>
+    <string name="title_contacts_list">Contacts List</string>
+    <string name="title_assignments_list">My Assignments</string>
     <string name="title_trace_detail">Trace Detail</string>
+    <string name="title_followups_list">Follow Ups</string>
+    <string name="title_fill_followup_form">Fill Report</string>
     <string name="title_continue_trace">Continue Trace</string>
+    <string name="title_contact_form">Add Contact</string>
     <string-array name="gender">
         <item></item>
         <item>Male</item>
@@ -372,6 +382,26 @@
         <item>Yugoslavia</item>
         <item>Zambia</item>
         <item>Zimbabwe</item>
+    </string-array>
+
+    <string-array name="region_array">
+        <item>Select a Region</item>
+        <item>Oti Region </item>
+        <item>Bono East Region </item>
+        <item>Ahafo Region </item>
+        <item>Bono Region </item>
+        <item>North East Region </item>
+        <item>Savannah Region </item>
+        <item>Western North Region</item>
+        <item>Western Region </item>
+        <item>Volta Region </item>
+        <item>Greater Accra Region </item>
+        <item>Eastern Region </item>
+        <item>Ashanti Region </item>
+        <item>Central Region </item>
+        <item>Northern Region </item>
+        <item>Upper East Region </item>
+        <item>Upper West Region </item>
     </string-array>
     <string-array name="test_result">
         <item></item>

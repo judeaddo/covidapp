@@ -10,14 +10,14 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context=".TraceListActivity">
+    tools:context=".ContactsListActivity">
 
     <!--
     This layout is a two-pane layout for the Traces master/detail flow.
     -->
 
     <FrameLayout
-        android:id="@+id/trace_detail_container"
+        android:id="@+id/contacts_detail_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3" />
@@ -25,13 +25,13 @@
     <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/trace_list"
-        android:name="com.digitelgh.apps.covid_19tracer.TraceListFragment"
+        android:name="com.digitelgh.apps.covid_19tracer.ContactListFragment"
         android:layout_width="@dimen/item_width"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.digitelgh.apps.covid_19tracer.TraceListActivity"
-        tools:listitem="@layout/trace_list_content" />
+        tools:context="com.digitelgh.apps.covid_19tracer.ContactsListActivity"
+        tools:listitem="@layout/contact_list_content" />
 
 </LinearLayout>

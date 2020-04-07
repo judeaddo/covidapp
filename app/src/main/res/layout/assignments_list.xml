@@ -2,12 +2,12 @@
 <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/trace_list"
-    android:name="com.digitelgh.apps.covid_19tracer.TraceListFragment"
+    android:id="@+id/assignments_list"
+    android:name="com.digitelgh.apps.covid_19tracer.AssignmentsListFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".TraceListActivity"
-    tools:listitem="@layout/trace_list_content" />
+    tools:context=".AssignmentsActivity"
+    tools:listitem="@layout/assignments_list_content" />

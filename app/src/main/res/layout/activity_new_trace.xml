@@ -21,11 +21,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!--<com.digitelgh.apps.covid_19tracer.custom.CustomViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />-->
-
     <ScrollView
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
