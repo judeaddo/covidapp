@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".TraceDetailActivity"
+    tools:ignore="MergeRootFrame">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/trace_detail_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/follow_up_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/abel"
+                android:padding="30dp"
+                android:text="@string/follow_up_day_label"
+                android:textColor="#000000"
+                android:textSize="21sp" />
+            <TextView
+                android:id="@+id/follow_up_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/abel"
+                android:padding="30dp"
+                android:text="@string/follow_up_today_date"
+                android:textAlignment="textEnd"
+                android:textColor="#000000"
+                android:textSize="21sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="150dp"
+            android:background="@drawable/section_bg"
+            android:fontFamily="@font/sintony_bold"
+            android:gravity="center|left"
+            android:paddingStart="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/header_follow_up_page"
+            android:textAllCaps="true"
+            android:textColor="#555555"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:id="@+id/symptoms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <CheckBox
+                            android:id="@+id/fever"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/abel"
+                            android:text="Fever (>38°C)" />
+
+                        <CheckBox
+                            android:id="@+id/sore_throat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/abel"
+                            android:text="Sore Throat" />
+
+                        <CheckBox
+                            android:id="@+id/cough"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/abel"
+                            android:text="Cough" />
+
+                        <CheckBox
+                            android:id="@+id/runny_nose"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/abel"
+                            android:text="Runny nose" />
+
+                        <CheckBox
+                            android:id="@+id/shortness_of_breath"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/abel"
+                            android:text="Shortness of breath" />
+
+                        <CheckBox
+                            android:id="@+id/abdominal_pain"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/abel"
+                            android:text="Abdominal Pain" />
+
+                        <CheckBox
+                            android:id="@+id/nausea"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/abel"
+                            android:text="Nausea" />
+
+                        <CheckBox
+                            android:id="@+id/vomiting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/abel"
+                            android:text="Vomiting" />
+
+                        <CheckBox
+                            android:id="@+id/diarrhoea"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/abel"
+                            android:text="Diarrhoea" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp">
+                <TextView
+                    android:id="@+id/testedLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:fontFamily="@font/abel"
+                    android:text="@string/remark_follow_up_page"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+                <EditText
+                    android:id="@+id/remarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/submit_follow_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Submit" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
