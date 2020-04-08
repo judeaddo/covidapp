@@ -23,6 +23,10 @@
             android:label="@string/title_contacts_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".FollowUpListActivity"
+            android:label="@string/title_followups_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".AssignmentsActivity"
             android:label="@string/title_assignments_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>

@@ -1,5 +1,6 @@
 package com.digitelgh.apps.covid_19tracer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -34,18 +35,21 @@ import androidx.recyclerview.widget.RecyclerView;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class ContactsListActivity extends AppCompatActivity {
+public class FollowUpListActivity extends AppCompatActivity {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
     private boolean mTwoPane;
+    private boolean dataLoaded = false;
+    private Integer dataCount = 1;
+    private String trace_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contacts_list);
+        setContentView(R.layout.activity_followup_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,20 +59,26 @@ public class ContactsListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ContactsListActivity.this, ContactFormActivity.class);
-                startActivity(i);
-                finish();
+                if (dataLoaded) {
+                    Intent i = new Intent(FollowUpListActivity.this, FollowUpActivity.class);
+                    i.putExtra(FollowUpFormFragment.ARG_ITEM_ID, dataCount.toString());
+                    i.putExtra(FollowUpFormFragment.TRACE_ID, trace_id);
+                    startActivity(i);
+                    finish();
+                }
             }
         });
-        if (findViewById(R.id.contacts_detail_container) != null) {
+        if (findViewById(R.id.followups_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
+        trace_id = getIntent().getStringExtra(FollowUpListFragment.ARG_ITEM_ID);
+        Log.i("EBO:::: ",trace_id);
 
-        getJSON(getResources().getString(R.string.fetch_contacts_url));
+        getJSON(getResources().getString(R.string.fetch_followups_url)+"/"+trace_id);
     }
 
     private void getJSON(final String urlWebService) {
@@ -86,7 +96,7 @@ public class ContactsListActivity extends AppCompatActivity {
                 super.onPostExecute(s);
 //                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 try {
-                    View recyclerView = findViewById(R.id.trace_list);
+                    View recyclerView = findViewById(R.id.followups_list_id);
                     assert recyclerView != null;
                     setupRecyclerView((RecyclerView) recyclerView, s);
 //                    loadIntoListView(s);
@@ -117,6 +127,7 @@ public class ContactsListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView, String json) throws JSONException{
+        Log.d("EBO:::: ",json);
         //creating a json array from the json string
         JSONArray jsonArray = new JSONArray(json);
         //creating a string array for listview
@@ -127,15 +138,18 @@ public class ContactsListActivity extends AppCompatActivity {
             JSONObject obj = jsonArray.getJSONObject(i);
             records[i] = obj.toString();
         }
+        // enable the fab onclick only when we have fully loaded data
+        dataCount = jsonArray.length() + 1;
+        dataLoaded = true;
 //        String tag = "JSON";
 //        Log.i(tag,json);
-        recyclerView.addItemDecoration(new DividerItemDecoration(ContactsListActivity.this,
+        recyclerView.addItemDecoration(new DividerItemDecoration(FollowUpListActivity.this,
                 DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, records, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-        private final ContactsListActivity mParentActivity;
+        private final FollowUpListActivity mParentActivity;
 //        private final List<DummyContent.DummyItem> mValues;
         private final String[] mValues;
         private final boolean mTwoPane;
@@ -170,7 +184,7 @@ public class ContactsListActivity extends AppCompatActivity {
 //            }
 //        };
 
-        SimpleItemRecyclerViewAdapter(ContactsListActivity parent, String[] items, boolean twoPane) {
+        SimpleItemRecyclerViewAdapter(FollowUpListActivity parent, String[] items, boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
             mTwoPane = twoPane;
@@ -179,7 +193,7 @@ public class ContactsListActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.contact_list_content, parent, false);
+                    .inflate(R.layout.followup_list_content, parent, false);
             return new ViewHolder(view, mListener);
         }
 
@@ -189,10 +203,9 @@ public class ContactsListActivity extends AppCompatActivity {
 
             try {
                 JSONObject rec = new JSONObject(mValues[position]);
-                holder.mContentView.setText(rec.getString("f_name"));
-                holder.mIdView.setText(rec.getString("phone"));
+                holder.mContentView.setText("Follow Up on "+rec.getString("date_taken"));
+                holder.mIdView.setText("Day "+rec.getString("day"));
                 holder.mContactStateView.setText(rec.getString("state"));
-                holder.mContactRegionView.setText(rec.getString("region"));
 //                TODO: Come back to this later
 //                holder.itemView.setTag(position+1);
 //                holder.itemView.setOnClickListener(mOnClickListener);
@@ -209,13 +222,11 @@ public class ContactsListActivity extends AppCompatActivity {
         class ViewHolder extends RecyclerView.ViewHolder {
             final TextView mIdView;
             final TextView mContentView;
-            final TextView mContactRegionView;
             final TextView mContactStateView;
             ViewHolder(View view, final OnItemClickListener listener) {
                 super(view);
                 mIdView = (TextView) view.findViewById(R.id.id_text);
                 mContentView = (TextView) view.findViewById(R.id.content);
-                mContactRegionView = (TextView) view.findViewById(R.id.contact_region_view);
                 mContactStateView = (TextView) view.findViewById(R.id.contact_state_view);
             }
         }

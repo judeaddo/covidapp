@@ -3,6 +3,7 @@ package com.digitelgh.apps.covid_19tracer;
 import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -59,7 +60,7 @@ public class NewTrace extends AppCompatActivity {
 
     Button btnSend;
     ImageButton btnAddDestination, btnAddContact;
-    LinearLayout /*rootDestinationView, rootContactView,*/ rootSymptoms, rootMedHistory, rootDestinations, rootContacts, rootFacilities;
+    LinearLayout /*rootDestinationView, rootContactView,*/ rootSymptoms, rootMedHistory, rootDestinations, rootFacilities;
 
     EditText etFullName, etPhone, etChildren, etResAddress, etResPop, etEmpName, etWorkLoc, etManContact, etTestHospital;
     TextView etDob, etSampleDate, etTestDate, etLastWorkTime, etIsoFinishDate, returnDate;
@@ -75,7 +76,7 @@ public class NewTrace extends AppCompatActivity {
 
     String fullName="", phone="", dob="", children="", resAddress="", resPop="0", empName="", workLoc="", manContact="", lastWorkTime="", testedCovid="", testDate="", testHospital="", testResult="", sampleTaken="", sampleDate="",
             isoFinishDate="", transportMode="", resArrangement="", empStatus="", travelled="", sharedFacilities="", symptoms="", gender="", nationality="", mStatus="", sampleResult="", isoDecision="",
-            destinations="", contacts="", medHistory="", REF;
+            destinations="", medHistory="", REF;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -136,11 +137,11 @@ public class NewTrace extends AppCompatActivity {
         rootSymptoms = findViewById(R.id.symptoms);
         rootMedHistory = findViewById(R.id.med_history);
         rootDestinations = findViewById(R.id.destinations);
-        rootContacts = findViewById(R.id.contacts);
+//        rootContacts = findViewById(R.id.contacts);
         rootFacilities = findViewById(R.id.shared_facilities);
 
         btnAddDestination = findViewById(R.id.add_destination);
-        btnAddContact = findViewById(R.id.add_contact);
+//        btnAddContact = findViewById(R.id.add_contact);
         btnSend = findViewById(R.id.send_btn);
         progress = findViewById(R.id.progress);
 
@@ -154,13 +155,13 @@ public class NewTrace extends AppCompatActivity {
             }
         });
 
-        btnAddContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View contactItem = getLayoutInflater().inflate(R.layout.item_contact, null);
-                rootContacts.addView(contactItem);
-            }
-        });
+//        btnAddContact.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                View contactItem = getLayoutInflater().inflate(R.layout.item_contact, null);
+//                rootContacts.addView(contactItem);
+//            }
+//        });
 
         etDob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,7 +213,7 @@ public class NewTrace extends AppCompatActivity {
                 Map<Integer,String> symptomsArray = new HashMap<Integer,String>();
                 Map<Integer,String> medHistoryArray = new HashMap<Integer,String>();
                 Map<Integer,String> destinationsArray = new HashMap<Integer,String>();
-                Map<Integer,String> contactsArray = new HashMap<Integer,String>();
+//                Map<Integer,String> contactsArray = new HashMap<Integer,String>();
                 Map<Integer,String> facilitiesArray = new HashMap<Integer,String>();
                 for (int i = 0; i < rootSymptoms.getChildCount(); i++) {
                     final View child = rootSymptoms.getChildAt(i);
@@ -246,14 +247,14 @@ public class NewTrace extends AppCompatActivity {
                         }
                     }
                 }
-                for (int i = 0; i < rootContacts.getChildCount(); i++) {
-                    final View child = rootContacts.getChildAt(i);
-                    if (child instanceof CheckBox) {
-                        if(((CheckBox) child).isChecked()) {
-                            contactsArray.put(i, ((CheckBox) child).getText().toString());
-                        }
-                    }
-                }
+//                for (int i = 0; i < rootContacts.getChildCount(); i++) {
+//                    final View child = rootContacts.getChildAt(i);
+//                    if (child instanceof CheckBox) {
+//                        if(((CheckBox) child).isChecked()) {
+//                            contactsArray.put(i, ((CheckBox) child).getText().toString());
+//                        }
+//                    }
+//                }
                 RadioButton rdTransportMode = rgTransportMode.findViewById(rgTransportMode.getCheckedRadioButtonId());
                 RadioButton rdResArrangement = rgResArrangement.findViewById(rgResArrangement.getCheckedRadioButtonId());
                 RadioButton rdEmpStatus = rgEmpStatus.findViewById(rgEmpStatus.getCheckedRadioButtonId());
@@ -276,7 +277,7 @@ public class NewTrace extends AppCompatActivity {
                 symptoms = json.toJson(symptomsArray);
                 medHistory = json.toJson(medHistoryArray);
                 destinations = json.toJson(destinationsArray);
-                contacts = json.toJson(contactsArray);
+//                contacts = json.toJson(contactsArray);
                 sharedFacilities = json.toJson(facilitiesArray);
 
                 gender = spGender.getSelectedItem().toString();
@@ -304,11 +305,12 @@ public class NewTrace extends AppCompatActivity {
                 //mTrace trace = new mTrace(REF, 0, Integer.parseInt(userId), fullName, );
                 mTrace trace = new mTrace(REF, 0, Integer.parseInt(userId), fullName, dob, gender, nationality, phone, mStatus, children, transportMode, resAddress, resArrangement,
                         sharedFacilities, resPop, empStatus, empName, workLoc, manContact, lastWorkTime, symptoms, medHistory, testedCovid, testDate, testHospital, testResult, travelled,
-                        destinations, contacts, sampleTaken, sampleDate, sampleResult, isoDecision, isoFinishDate, "", 0);
+                        destinations, sampleTaken, sampleDate, sampleResult, isoDecision, isoFinishDate, "", 0);
 
                 //long id = db.addTrace(trace);
                 //sendTrace(trace, id);
-                //Toast.makeText(getApplicationContext(), json.toJson(symptomsArray) + ":" + isoDecision, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), json.toJson(symptomsArray) + ":" + isoDecision, Toast.LENGTH_LONG).show();
+                Log.i("EBO destinations", destinations);
             }
         });
     }
@@ -392,14 +394,14 @@ public class NewTrace extends AppCompatActivity {
                                     }
                                 }
                             }
-                            for (int i = 0; i < rootContacts.getChildCount(); i++) {
-                                final View child = rootContacts.getChildAt(i);
-                                if (child instanceof CheckBox) {
-                                    if(((CheckBox) child).isChecked()) {
-                                        ((CheckBox) child).setChecked(false);
-                                    }
-                                }
-                            }
+//                            for (int i = 0; i < rootContacts.getChildCount(); i++) {
+//                                final View child = rootContacts.getChildAt(i);
+//                                if (child instanceof CheckBox) {
+//                                    if(((CheckBox) child).isChecked()) {
+//                                        ((CheckBox) child).setChecked(false);
+//                                    }
+//                                }
+//                            }
                             for (int i = 0; i < rgTransportMode.getChildCount(); i++) {
                                 final View child = rgTransportMode.getChildAt(i);
                                 if (child instanceof RadioButton) {
@@ -560,7 +562,7 @@ public class NewTrace extends AppCompatActivity {
                 map.put("tested_result", String.valueOf(trace.getTestedResult()));
                 map.put("travelled", String.valueOf(trace.getTravelled()));
                 map.put("travel_history", String.valueOf(trace.getTravelHistory()));
-                map.put("recent_contacts", String.valueOf(trace.getRecentContacts()));
+//                map.put("recent_contacts", String.valueOf(trace.getRecentContacts()));
                 map.put("sample_taken", String.valueOf(trace.getSampleTaken()));
                 map.put("sample_date", String.valueOf(trace.getSampleDate()));
                 map.put("testing_result", String.valueOf(trace.getSampleResult()));

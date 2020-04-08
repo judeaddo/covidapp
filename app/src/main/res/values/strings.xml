@@ -3,6 +3,9 @@
     <string name="app_subtitle">Contact Tracing Mobile Tool</string>
 
     <string name="dummy_button">Dummy Button</string>
+    <string name="button_fullscreen_1">New Contacts</string>
+    <string name="button_fullscreen_2">Start New Trace</string>
+    <string name="button_fullscreen_3">Visited Contacts</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_new_trace">New Trace</string>
     <string name="title_activity_login">Log in</string>
@@ -37,6 +40,7 @@
     <string name="fetch_traces_url">"http://contacttracingghana.com/api/traces"</string>
     <string name="fetch_assignments_url">"http://contacttracingghana.com/api/assignments"</string>
     <string name="fetch_contacts_url">"http://contacttracingghana.com/api/contacts"</string>
+    <string name="fetch_followups_url">"http://contacttracingghana.com/api/followups"</string>
 
     <!-- notification -->
     <string name="channel_name">NOTIFICATION_NAME</string>
@@ -92,7 +96,7 @@
     <string name="q28">Recent contacts (who have been in close contact with subject)</string>
 
     <!-- section 7-->
-    <string name="s7">Section 7 - Testing</string>
+    <string name="s7">Section 6 - Testing</string>
     <string name="q29">Sample taken?</string>
     <string name="q30">Date taken</string>
     <string name="q31">Test Result</string>
@@ -385,7 +389,7 @@
     </string-array>
 
     <string-array name="region_array">
-        <item>Select a Region</item>
+        <item></item>
         <item>Oti Region </item>
         <item>Bono East Region </item>
         <item>Ahafo Region </item>
@@ -403,6 +407,271 @@
         <item>Upper East Region </item>
         <item>Upper West Region </item>
     </string-array>
+
+    <string-array name="district_array">
+        <item></item>
+        <item>Adansi North District</item>
+        <item>Ahafo Ano North Municipal</item>
+        <item>Ahafo Ano South West District</item>
+        <item>Amansie Central District</item>
+        <item>Amansie West District</item>
+        <item>Asante Akim Central Municipal</item>
+        <item>Asante Akim North District</item>
+        <item>Asante Akim South Municipal</item>
+        <item>Asokore Mampong Municipal</item>
+        <item>Atwima Mponua District</item>
+        <item>Atwima Nwabiagya Municipal</item>
+        <item>Bekwai Municipal</item>
+        <item>Bosome Freho District</item>
+        <item>Bosomtwe District</item>
+        <item>Ejisu Municipal</item>
+        <item>Ejura Sekyedumase Municipal</item>
+        <item>Kumasi Metropolitan</item>
+        <item>Kwabre East Municipal</item>
+        <item>Mampong Municipal </item>
+        <item>Obuasi Municipal</item>
+        <item>Offinso Municipal</item>
+        <item>Offinso North District</item>
+        <item>Sekyere Afram Plains District</item>
+        <item>Sekyere Central District</item>
+        <item>Sekyere East District</item>
+        <item>Sekyere Kumawu District</item>
+        <item>Sekyere South District</item>
+        <item>Asunafo North Municipal</item>
+        <item>Asunafo South District</item>
+        <item>Asutifi North District</item>
+        <item>Asutifi South District</item>
+        <item>Atebubu Amantin Municipal</item>
+        <item>Banda District</item>
+        <item>Berekum East Municipal</item>
+        <item>Dormaa Central Municipal</item>
+        <item>Dormaa East District</item>
+        <item>Dormaa West District</item>
+        <item>Jaman North District</item>
+        <item>Jaman South Municipal</item>
+        <item>Kintampo North Municipal</item>
+        <item>Kintampo South District</item>
+        <item>Nkoranza South Municipal </item>
+        <item>Nkoranza  North District</item>
+        <item>Pru East District</item>
+        <item>Sene East District</item>
+        <item>Sene West District</item>
+        <item>Sunyani Municipal</item>
+        <item>Sunyani West District</item>
+        <item>Tain District</item>
+        <item>Tano North Municipal</item>
+        <item>Tano South Municipal</item>
+        <item>Techiman Municipal</item>
+        <item>Techiman North District</item>
+        <item>Wenchi Municipal</item>
+        <item>Abura Asebu Kwamankese District</item>
+        <item>Agona East District</item>
+        <item>Agona West Municipal</item>
+        <item>Ajumako Enyan Essiam District</item>
+        <item>Asikuma Odoben Brankwa District</item>
+        <item>Assin Central Municipal</item>
+        <item>Assin South District</item>
+        <item>Awutu Senya East Municipal</item>
+        <item>Awutu Senya West District</item>
+        <item>Cape Coast Metropolitan</item>
+        <item>Effutu Municipal</item>
+        <item>Ekumfi District</item>
+        <item>Gomoa Central District</item>
+        <item>Gomoa West District</item>
+        <item>Komenda Edina Eguafo Abirem Municipal</item>
+        <item>Mfantseman Municipal</item>
+        <item>Twifo Atti Morkwa District</item>
+        <item>Twifo Heman Lower Denkyira District</item>
+        <item>Upper Denkyira East Municipal</item>
+        <item>Upper Denkyira West District</item>
+        <item>Akuapem North Municipal</item>
+        <item>Akuapim South District</item>
+        <item>Akyemansa District</item>
+        <item>Asuogyaman District</item>
+        <item>Atiwa West District</item>
+        <item>Ayensuano District</item>
+        <item>Birim Central Municipal</item>
+        <item>Birim North District</item>
+        <item>Birim South District</item>
+        <item>Denkyembour District</item>
+        <item>Abuakwa South Municipal</item>
+        <item>Fanteakwa North District</item>
+        <item>Kwaebibirem Municipal</item>
+        <item>Kwahu Afram Plains North District</item>
+        <item>Kwahu Afram Plains South District</item>
+        <item>Kwahu East District</item>
+        <item>Kwahu South District</item>
+        <item>Kwahu West Municipal</item>
+        <item>Lower Manya Krobo Municipal</item>
+        <item>New Juaben South Municipal</item>
+        <item>Nsawam Adoagyiri Municipal</item>
+        <item>Suhum Municipal</item>
+        <item>Upper Manya Krobo District</item>
+        <item>Upper West Akim District</item>
+        <item>West Akim Municipal</item>
+        <item>Yilo Krobo Municipal</item>
+        <item>Accra Metropolitan</item>
+        <item>Ada West District</item>
+        <item>Ada East District</item>
+        <item>Adentan Municipal</item>
+        <item>Ashaiman Municipal</item>
+        <item>Ga Central Municipal</item>
+        <item>Ga South Municipal</item>
+        <item>Ga East Municipal</item>
+        <item>Ga West Municipal</item>
+        <item>La Dade Kotopon Municipal</item>
+        <item>Ledzekuku Municipal</item>
+        <item>La Nkwantanang Madina Municipal</item>
+        <item>Ningo Prampram District</item>
+        <item>Shai Osudoku District</item>
+        <item>Tema Metropolitan</item>
+        <item>Kpone Katamanso Municipal</item>
+        <item>Bole District</item>
+        <item>Bunkpurugu Nyankpanduri District</item>
+        <item>Central Gonja District</item>
+        <item>Chereponi District</item>
+        <item>East Gonja Municipal</item>
+        <item>East Mamprusi Municipal</item>
+        <item>Gushegu Municipal</item>
+        <item>Karaga District</item>
+        <item>Kpandai District</item>
+        <item>Kumbungu District</item>
+        <item>Mamprugu Moagduri District</item>
+        <item>Mion District</item>
+        <item>Nanumba North Municipal</item>
+        <item>Nanumba South District</item>
+        <item>North Gonja District</item>
+        <item>Saboba District</item>
+        <item>Sagnarigu Municipal</item>
+        <item>Savelugu Municipal</item>
+        <item>Sawla-Tuna-Kalba District</item>
+        <item>Tamale Metropolitan</item>
+        <item>Tatale/Sanguli District</item>
+        <item>Tolon District</item>
+        <item>West Gonja Municipal</item>
+        <item>West Mamprusi Municipal</item>
+        <item>Yendi Municipal</item>
+        <item>Zabzugu District</item>
+        <item>Bawku Municipal</item>
+        <item>Bawku West District</item>
+        <item>Binduri District</item>
+        <item>Bolgatanga Municipal</item>
+        <item>Bongo District</item>
+        <item>Builsa North Municipal</item>
+        <item>Builsa South District</item>
+        <item>Garu District</item>
+        <item>Kassena Nankana Municipal</item>
+        <item>Kassena Nankana West District</item>
+        <item>Nabdam District</item>
+        <item>Pusiga District</item>
+        <item>Talensi District</item>
+        <item>Daffiama Bussie Issa District</item>
+        <item>Jirapa Municipal</item>
+        <item>Lambussie Karni District</item>
+        <item>Lawra Municipal</item>
+        <item>Nadowli Kaleo District</item>
+        <item>Nandom Municipal</item>
+        <item>Sissala East Municipal</item>
+        <item>Sissala West District</item>
+        <item>Wa East District</item>
+        <item>Wa Municipal</item>
+        <item>Wa West District</item>
+        <item>Adaklu District</item>
+        <item>Afadzato South District</item>
+        <item>Agotime Ziope District</item>
+        <item>Akatsi North District</item>
+        <item>Akatsi South District</item>
+        <item>Biakoye District</item>
+        <item>Central Tongu District</item>
+        <item>Ho Municipal</item>
+        <item>Ho West District</item>
+        <item>Hohoe Municipal</item>
+        <item>Hohoe Municipal</item>
+        <item>Jasikan District</item>
+        <item>Kadjebi District</item>
+        <item>Keta Municipal</item>
+        <item>Ketu North Municipal</item>
+        <item>Ketu South Municipal</item>
+        <item>Kpando Municipal</item>
+        <item>Krachi East Municipal</item>
+        <item>Krachi Nchumuru District</item>
+        <item>Krachi West District</item>
+        <item>Nkwanta North District</item>
+        <item>Nkwanta South Municipal</item>
+        <item>North Dayi District</item>
+        <item>North Tongu District</item>
+        <item>South Dayi District</item>
+        <item>South Tongu District</item>
+        <item>Ahanta West Municipal</item>
+        <item>Amenfi Central District</item>
+        <item>Wassa Amenfi East Municipal</item>
+        <item>Amenfi West Municipal</item>
+        <item>Aowin Municipal</item>
+        <item>Bia East District</item>
+        <item>Bia West District</item>
+        <item>Bibiani-Anhwiaso Bekwai Municipal</item>
+        <item>Bodi District</item>
+        <item>Ellembelle District</item>
+        <item>Jomoro Municipal</item>
+        <item>Juaboso District</item>
+        <item>Mpohor District</item>
+        <item>Nzema East Municipal</item>
+        <item>Prestea-Huni Valley Municipal</item>
+        <item>Sefwi Akontombra District</item>
+        <item>Sefwi Wiawso Municipal</item>
+        <item>Sekondi Takoradi Metropolitan</item>
+        <item>Shama District</item>
+        <item>Suaman District</item>
+        <item>Tarkwa Nsuaem Municipal</item>
+        <item>Wassa East District</item>
+        <item>Oforikrom Municipal</item>
+        <item>Kwadaso Municipal</item>
+        <item>Old Tafo Municipal</item>
+        <item>Asokwa Municipal</item>
+        <item>Suame Municipal</item>
+        <item>Juaben Municipal</item>
+        <item>Amansie South District</item>
+        <item>Atwima Nwabiagya North District</item>
+        <item>Akrofuom District</item>
+        <item>Adansi Asokwa District</item>
+        <item>Obuasi East District</item>
+        <item>Afigya Kwabre North District</item>
+        <item>Pru West District</item>
+        <item>Berekum West District</item>
+        <item>Assin North District</item>
+        <item>Gomoa East District</item>
+        <item>Okere District</item>
+        <item>Atiwa East District</item>
+        <item>Fanteakwa South District</item>
+        <item>Asene Manso Akroso District</item>
+        <item>Abuakwa North Municipal</item>
+        <item>New Juaben North Municipal</item>
+        <item>Okaikwei North Municipal</item>
+        <item>Ablekuma North Municipal</item>
+        <item>Ablekuma West Municipal</item>
+        <item>Ayawaso East Municipal</item>
+        <item>Ayawaso North Municipal</item>
+        <item>Ayawaso West Municipal</item>
+        <item>Ga North Municipal</item>
+        <item>Weija Gbawe Municipal</item>
+        <item>Tema West Municipal</item>
+        <item>Krowor Municipal</item>
+        <item>Nanton District</item>
+        <item>Yunyoo-Nasuan District</item>
+        <item>Bolgatanga East District</item>
+        <item>Tempane District</item>
+        <item>Effia Kwesimintsim Municipal</item>
+        <item>Achiase District</item>
+        <item>Korle Klottey Municipal</item>
+        <item>Ablekuma Central Municipal</item>
+        <item>Ayawaso Central Municipal</item>
+        <item>Anloga District</item>
+        <item>North East Gonja District</item>
+    </string-array>
+
+    <!--<string-array name="">-->
+        <!---->
+    <!--</string-array>-->
     <string-array name="test_result">
         <item></item>
         <item>Negative</item>

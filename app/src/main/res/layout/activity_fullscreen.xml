@@ -55,7 +55,7 @@
             android:fontFamily="@font/baloo_thambi"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:text="My Assignments"
+            android:text="@string/button_fullscreen_1"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
@@ -84,7 +84,7 @@
             android:fontFamily="@font/baloo_thambi"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:text="Start New Trace"
+            android:text="@string/button_fullscreen_2"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
@@ -98,7 +98,7 @@
             android:fontFamily="@font/baloo_thambi"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
-            android:text="All Traces"
+            android:text="@string/button_fullscreen_3"
             android:textAllCaps="false"
             android:textColor="#555"
             android:textSize="18sp" />

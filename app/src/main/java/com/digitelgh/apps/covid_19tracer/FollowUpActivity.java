@@ -105,8 +105,9 @@ public class FollowUpActivity extends AppCompatActivity {
                     .commit();
         }
         // TODO: change this to call from server
+        String day = getIntent().getStringExtra(FollowUpFormFragment.ARG_ITEM_ID);
         dayCount = findViewById(R.id.follow_up_day);
-        dayCount.setText("Day 1");
+        dayCount.setText("Day "+day);
         //
         TextView dayDate = (TextView) findViewById(R.id.follow_up_date);
         Date date = Calendar.getInstance().getTime();
@@ -171,9 +172,7 @@ public class FollowUpActivity extends AppCompatActivity {
                                             @Override
                                             public void onDismissed(Snackbar snackbar, int event) {
                                                 super.onDismissed(snackbar, event);
-                                                Intent i = new Intent(FollowUpActivity.this, TraceListActivity.class);
-                                                startActivity(i);
-                                                finish();
+//                                                navigateUpTo();
                                             }
                                         }).show();
                             } else {
@@ -219,7 +218,8 @@ public class FollowUpActivity extends AppCompatActivity {
                 map.put("vomiting", vomitingData.toString());
                 map.put("diarrhoea", diarrhoeaData.toString());
                 map.put("remarks", remarks.getText().toString());
-                map.put("trace_id", getIntent().getStringExtra(TraceDetailFragment.ARG_ITEM_ID));
+                map.put("trace_id", getIntent().getStringExtra(FollowUpFormFragment.TRACE_ID));
+                Log.d("EBO TRACEID", getIntent().getStringExtra(FollowUpFormFragment.TRACE_ID));
                 // save this in appPref and fetch after for use
                 map.put("api_token", "GIXzIAdOiAo1AojHBRUasmttNrWqCWGO7hV12n7v3W2xfkUy1wI3Bpl2jXex");
                 return map;
@@ -248,7 +248,7 @@ public class FollowUpActivity extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            navigateUpTo(new Intent(this, TraceListActivity.class));
+            navigateUpTo(new Intent(this, FollowUpActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

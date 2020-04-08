@@ -79,14 +79,21 @@
                             android:textColor="#000000"
                             android:textSize="17sp" />
 
-                        <TextView
+                        <!--<TextView-->
+                            <!--android:id="@+id/dob"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@drawable/input_bg"-->
+                            <!--android:ems="10"-->
+                            <!--android:fontFamily="@font/abel"-->
+                            <!--android:textSize="16sp" />-->
+                        <EditText
                             android:id="@+id/dob"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/input_bg"
-                            android:ems="10"
                             android:fontFamily="@font/abel"
-                            android:textSize="16sp" />
+                            android:ems="10"
+                            android:inputType="date" />
 
                     </LinearLayout>
                     <LinearLayout
@@ -229,23 +236,29 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_marginBottom="15dp">
-
-                    <TextView
-                        android:id="@+id/textView43"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="30dp"
-                        android:fontFamily="@font/abel"
-                        android:text="@string/q27"
-                        android:textSize="17sp"
-                        android:textColor="#000000" />
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:id="@+id/textView43"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginRight="30dp"
+                            android:fontFamily="@font/abel"
+                            android:text="@string/q27"
+                            android:textSize="17sp"
+                            android:textColor="#000000" />
+                    </LinearLayout>
                     <RadioGroup
                         android:id="@+id/transport_mode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <RadioButton
@@ -385,14 +398,14 @@
                             android:textSize="17sp" />
 
                         <CheckBox
-                            android:id="@+id/toilet"
+                            android:id="@+id/trace_toilet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/abel"
                             android:text="Toilet" />
 
                         <CheckBox
-                            android:id="@+id/batchroom"
+                            android:id="@+id/trace_bathroom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/abel"
@@ -544,17 +557,28 @@
                         android:inputType="number|phone"
                         android:textSize="16sp" />
 
-                    <TextView
+                    <!--<TextView-->
+                        <!--android:id="@+id/last_work_time"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginBottom="10dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:background="@drawable/input_bg"-->
+                        <!--android:ems="10"-->
+                        <!--android:fontFamily="@font/abel"-->
+                        <!--android:hint="@string/q18"-->
+                        <!--android:textSize="16sp" />-->
+
+                    <EditText
                         android:id="@+id/last_work_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_weight="1"
-                        android:background="@drawable/input_bg"
-                        android:ems="10"
                         android:fontFamily="@font/abel"
                         android:hint="@string/q18"
-                        android:textSize="16sp" />
+                        android:ems="10"
+                        android:inputType="date" />
 
                 </LinearLayout>
 
@@ -611,28 +635,28 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <CheckBox
-                                android:id="@+id/fever"
+                                android:id="@+id/trace_fever"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/abel"
                                 android:text="Fever" />
 
                             <CheckBox
-                                android:id="@+id/cough"
+                                android:id="@+id/trace_cough"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/abel"
                                 android:text="Cough" />
 
                             <CheckBox
-                                android:id="@+id/runnynose"
+                                android:id="@+id/trace_runnynose"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/abel"
                                 android:text="Runny nose" />
 
                             <CheckBox
-                                android:id="@+id/breath"
+                                android:id="@+id/trace_breath"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/abel"
@@ -669,28 +693,28 @@
                                 android:layout_weight="1">
 
                                 <CheckBox
-                                    android:id="@+id/hypertension"
+                                    android:id="@+id/trace_hypertension"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/abel"
                                     android:text="Hypertension" />
 
                                 <CheckBox
-                                    android:id="@+id/asthma"
+                                    android:id="@+id/trace_asthma"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/abel"
                                     android:text="Asthma" />
 
                                 <CheckBox
-                                    android:id="@+id/diabetes"
+                                    android:id="@+id/trace_diabetes"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/abel"
                                     android:text="Diabetes" />
 
                                 <CheckBox
-                                    android:id="@+id/cancer"
+                                    android:id="@+id/trace_cancer"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/abel"
@@ -704,28 +728,28 @@
                                 android:layout_weight="1">
 
                                 <CheckBox
-                                    android:id="@+id/heart"
+                                    android:id="@+id/trace_heart"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/abel"
                                     android:text="Heart disease" />
 
                                 <CheckBox
-                                    android:id="@+id/hepatitis"
+                                    android:id="@+id/trace_hepatitis"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/abel"
                                     android:text="Hepatitis" />
 
                                 <CheckBox
-                                    android:id="@+id/smoking"
+                                    android:id="@+id/trace_smoking"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/abel"
                                     android:text="Smoking" />
 
                                 <CheckBox
-                                    android:id="@+id/allergies"
+                                    android:id="@+id/trace_allergies"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/abel"
@@ -801,13 +825,21 @@
                             android:textColor="#000000"
                             android:textSize="17sp" />
 
-                        <TextView
+                        <!--<TextView-->
+                            <!--android:id="@+id/test_date"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@drawable/input_bg"-->
+                            <!--android:ems="10"-->
+                            <!--android:fontFamily="@font/abel" />-->
+
+                        <EditText
                             android:id="@+id/test_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/input_bg"
+                            android:fontFamily="@font/abel"
                             android:ems="10"
-                            android:fontFamily="@font/abel" />
+                            android:inputType="date" />
 
                     </LinearLayout>
 
@@ -905,33 +937,31 @@
                         android:text="@string/q25"
                         android:textSize="17sp"
                         android:textColor="#000000" />
-
-                    <RadioGroup
-                        android:id="@+id/travelled"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/traveledYes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="20dp"
-                            android:fontFamily="@font/abel"
-                            android:text="Yes"
-                            android:textColor="#000000" />
-
-                        <RadioButton
-                            android:id="@+id/traveledNo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/abel"
-                            android:text="No"
-                            android:textColor="#000000" />
-                    </RadioGroup>
                 </LinearLayout>
+                <RadioGroup
+                    android:id="@+id/travelled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <RadioButton
+                        android:id="@+id/traveledYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/abel"
+                        android:text="Yes"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/traveledNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/abel"
+                        android:text="No"
+                        android:textColor="#000000" />
+                </RadioGroup>
                 <LinearLayout
                     android:id="@+id/destinations"
                     android:layout_width="match_parent"
@@ -981,7 +1011,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/return_date"
+                                android:id="@+id/travel_return_date"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="10dp"
@@ -1005,104 +1035,102 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="150dp"
-                android:background="@drawable/section_bg"
-                android:fontFamily="@font/sintony_bold"
-                android:gravity="center|left"
-                android:paddingStart="30dp"
-                android:paddingRight="30dp"
-                android:text="@string/s6"
-                android:textAllCaps="true"
-                android:textColor="#555555"
-                android:textSize="14sp" />
+            <!--<TextView-->
+                <!--android:id="@+id/textView8"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginEnd="150dp"-->
+                <!--android:background="@drawable/section_bg"-->
+                <!--android:fontFamily="@font/sintony_bold"-->
+                <!--android:gravity="center|left"-->
+                <!--android:paddingStart="30dp"-->
+                <!--android:paddingRight="30dp"-->
+                <!--android:text="@string/s6"-->
+                <!--android:textAllCaps="true"-->
+                <!--android:textColor="#555555"-->
+                <!--android:textSize="14sp" />-->
 
-            <LinearLayout
-                android:id="@+id/contacts_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="20dp">
+            <!--<LinearLayout-->
+                <!--android:id="@+id/contacts_view"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="20dp">-->
 
-                <LinearLayout
-                    android:id="@+id/contacts"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/contacts"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        android:orientation="vertical">
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginBottom="15dp"-->
+                        <!--android:orientation="vertical">-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:orientation="horizontal">-->
 
-                            <TextView
-                                android:id="@+id/textView14"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="30dp"
-                                android:fontFamily="@font/abel"
-                                android:text="@string/q28"
-                                android:textColor="#000000"
-                                android:textSize="17sp" />
+                            <!--<TextView-->
+                                <!--android:id="@+id/textView14"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginRight="30dp"-->
+                                <!--android:fontFamily="@font/abel"-->
+                                <!--android:text="@string/q28"-->
+                                <!--android:textColor="#000000"-->
+                                <!--android:textSize="17sp" />-->
 
-                        </LinearLayout>
+                        <!--</LinearLayout>-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginBottom="10dp"-->
+                            <!--android:gravity="center_vertical"-->
+                            <!--android:orientation="horizontal">-->
 
-                            <EditText
-                                android:id="@+id/contact_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/input_bg"
-                                android:ems="10"
-                                android:fontFamily="@font/abel"
-                                android:hint="Name"
-                                android:inputType="text"
-                                android:textSize="16sp" />
+                            <!--<EditText-->
+                                <!--android:id="@+id/contact_name"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginEnd="10dp"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:background="@drawable/input_bg"-->
+                                <!--android:ems="10"-->
+                                <!--android:fontFamily="@font/abel"-->
+                                <!--android:hint="Name"-->
+                                <!--android:inputType="text"-->
+                                <!--android:textSize="16sp" />-->
 
-                            <EditText
-                                android:id="@+id/contact_number"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:layout_weight="2"
-                                android:background="@drawable/input_bg"
-                                android:ems="10"
-                                android:fontFamily="@font/abel"
-                                android:hint="Phone number"
-                                android:inputType="phone"
-                                android:textSize="16sp" />
+                            <!--<EditText-->
+                                <!--android:id="@+id/contact_number"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginEnd="10dp"-->
+                                <!--android:layout_weight="2"-->
+                                <!--android:background="@drawable/input_bg"-->
+                                <!--android:ems="10"-->
+                                <!--android:fontFamily="@font/abel"-->
+                                <!--android:hint="Phone number"-->
+                                <!--android:inputType="phone"-->
+                                <!--android:textSize="16sp" />-->
 
-                            <ImageButton
-                                android:id="@+id/add_contact"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:background="@drawable/add_btn_bg"
-                                android:src="@drawable/outline_add_24"
-                                android:tint="#FFFFFF" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-            </LinearLayout>
+                            <!--<ImageButton-->
+                                <!--android:id="@+id/add_contact"-->
+                                <!--android:layout_width="40dp"-->
+                                <!--android:layout_height="40dp"-->
+                                <!--android:background="@drawable/add_btn_bg"-->
+                                <!--android:src="@drawable/outline_add_24"-->
+                                <!--android:tint="#FFFFFF" />-->
+                        <!--</LinearLayout>-->
+                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
 
             <TextView
                 android:id="@+id/textView18"
@@ -1190,14 +1218,22 @@
                             android:text="@string/q30"
                             android:textColor="#000000"
                             android:textSize="17sp" />
-                        <TextView
+                        <!--<TextView-->
+                        <!--android:id="@+id/sample_date"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="@drawable/input_bg"-->
+                        <!--android:ems="10"-->
+                        <!--android:fontFamily="@font/abel"-->
+                        <!--android:textSize="16sp" />-->
+
+                        <EditText
                             android:id="@+id/sample_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/input_bg"
-                            android:ems="10"
                             android:fontFamily="@font/abel"
-                            android:textSize="16sp" />
+                            android:ems="10"
+                            android:inputType="date" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1205,7 +1241,6 @@
                         android:orientation="vertical"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1">
-
                         <TextView
                             android:id="@+id/textView48"
                             android:layout_width="wrap_content"
@@ -1223,6 +1258,12 @@
                             android:entries="@array/test_result" />
 
                     </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1263,17 +1304,24 @@
                             android:textColor="#000000"
                             android:textSize="17sp" />
 
-                        <TextView
+                        <!--<TextView-->
+                            <!--android:id="@+id/qua_date"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:background="@drawable/input_bg"-->
+                            <!--android:ems="10"-->
+                            <!--android:fontFamily="@font/abel"-->
+                            <!--android:textSize="16sp" />-->
+                        <EditText
                             android:id="@+id/qua_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="@drawable/input_bg"
-                            android:ems="10"
                             android:fontFamily="@font/abel"
-                            android:textSize="16sp" />
+                            android:ems="10"
+                            android:inputType="date" />
                     </LinearLayout>
-
                 </LinearLayout>
             </LinearLayout>
 
@@ -1293,7 +1341,7 @@
 
                 <Button
                     android:id="@+id/send_btn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/yellow_btn_bg"
                     android:fontFamily="@font/sintony_bold"

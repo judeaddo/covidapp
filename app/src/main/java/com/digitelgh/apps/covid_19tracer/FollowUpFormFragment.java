@@ -22,6 +22,7 @@ public class FollowUpFormFragment extends Fragment {
      * represents.
      */
     public static final String ARG_ITEM_ID = "item_id";
+    public static final String TRACE_ID = "trace_id";
 
     /**
      * The dummy content this fragment is presenting.

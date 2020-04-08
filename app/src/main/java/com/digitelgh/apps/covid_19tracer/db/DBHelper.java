@@ -150,7 +150,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(TESTED_RES, trace.getTestedResult());
         values.put(TRAVELLED, trace.getTravelled());
         values.put(TRAV_HIS, trace.getTravelHistory());
-        values.put(REC_CON, trace.getRecentContacts());
+//        values.put(REC_CON, trace.getRecentContacts());
         values.put(SAMPLE_TAKEN, trace.getSampleTaken());
         values.put(SAMPLE_DATE, trace.getSampleDate());
         values.put(SAMPLE_RES, trace.getSampleResult());
@@ -201,7 +201,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(TESTED_RES, trace.getTestedResult());
         values.put(TRAVELLED, trace.getTravelled());
         values.put(TRAV_HIS, trace.getTravelHistory());
-        values.put(REC_CON, trace.getRecentContacts());
+//        values.put(REC_CON, trace.getRecentContacts());
         values.put(SAMPLE_TAKEN, trace.getSampleTaken());
         values.put(SAMPLE_DATE, trace.getSampleDate());
         values.put(SAMPLE_RES, trace.getSampleResult());
@@ -253,7 +253,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 trace.setTestedResult(c.getString(c.getColumnIndex(TESTED_RES)));
                 trace.setTravelled(c.getString(c.getColumnIndex(TRAVELLED)));
                 trace.setTravelHistory(c.getString(c.getColumnIndex(TRAV_HIS)));
-                trace.setRecentContacts(c.getString(c.getColumnIndex(REC_CON)));
+//                trace.setRecentContacts(c.getString(c.getColumnIndex(REC_CON)));
                 trace.setSampleTaken(c.getString(c.getColumnIndex(SAMPLE_TAKEN)));
                 trace.setSampleDate(c.getString(c.getColumnIndex(SAMPLE_DATE)));
                 trace.setSampleResult(c.getString(c.getColumnIndex(SAMPLE_RES)));

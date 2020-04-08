@@ -104,9 +104,37 @@
                     <TableRow
                         android:layout_width="fill_parent"
                         android:layout_marginBottom="15dip">
-
+                        <TextView
+                            android:id="@+id/contact_form_region_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dp"
+                            android:fontFamily="@font/abel"
+                            android:text="Select Region"
+                            android:textColor="#000000"
+                            android:textSize="17sp" />
                         <Spinner
                             android:id="@+id/contact_form_region"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="20dp" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_marginBottom="15dip">
+                        <TextView
+                            android:id="@+id/contact_form_district_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dp"
+                            android:fontFamily="@font/abel"
+                            android:text="Select District"
+                            android:textColor="#000000"
+                            android:textSize="17sp" />
+                        <Spinner
+                            android:id="@+id/contact_form_district"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

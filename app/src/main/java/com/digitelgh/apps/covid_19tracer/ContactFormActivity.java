@@ -40,15 +40,20 @@ public class ContactFormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact_form);
         mContentView = findViewById(R.id.fullscreen_content);
 
-        Spinner staticSpinner = (Spinner) findViewById(R.id.contact_form_region);
+        Spinner regionSpinner = (Spinner) findViewById(R.id.contact_form_region);
+        Spinner districtSpinner = (Spinner) findViewById(R.id.contact_form_district);
 
         // Create an ArrayAdapter using the string array and a default spinner
-        ArrayAdapter<CharSequence> staticAdapter = ArrayAdapter
+        ArrayAdapter<CharSequence> regionAdapter = ArrayAdapter
                 .createFromResource(this, R.array.region_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> districtAdapter = ArrayAdapter
+                .createFromResource(this, R.array.district_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
-        staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        regionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        districtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        staticSpinner.setAdapter(staticAdapter);
+        regionSpinner.setAdapter(regionAdapter);
+        districtSpinner.setAdapter(districtAdapter);
 //        hide();
 
         appPrefs = getSharedPreferences(getString(R.string.pref_key), MODE_PRIVATE);

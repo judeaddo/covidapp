@@ -3,14 +3,14 @@ package com.digitelgh.apps.covid_19tracer.model;
 public class mTrace {
     int id, traceId, userId, sharedNum, sent;
     String ref, fullName, dob, gender, nationality, phone, maritalStatus, children, transportMode, resAddress, resArrangement, resPopulation, sharedFacilities, empStatus, employer, workLoc, manContact, lastWorkTime,
-            symptoms, medHistory, testedCovid, testedDate, testedHospital, testedResult, travelled, travelHistory, recentContacts, sampleTaken, sampleDate, sampleResult, isoDecision, isoFinishDate, remarks;
+            symptoms, medHistory, testedCovid, testedDate, testedHospital, testedResult, travelled, travelHistory, sampleTaken, sampleDate, sampleResult, isoDecision, isoFinishDate, remarks;
 
     public mTrace(){}
 
     public mTrace(String ref, int traceId, int userId, String fullName, String dob, String gender, String nationality, String phone, String maritalStatus, String children,
                   String transportMode, String resAddress, String resArrangement, String sharedFacilities, String resPopulation, String empStatus, String employer,
                   String workLoc, String manContact, String lastWorkTime, String symptoms, String medHistory, String testedCovid, String testedDate, String testedHospital, String testedResult,
-                  String travelled, String travelHistory, String recentContacts, String sampleTaken, String sampleDate, String sampleResult, String isoDecision, String isoFinishDate, String remarks, int sent) {
+                  String travelled, String travelHistory, String sampleTaken, String sampleDate, String sampleResult, String isoDecision, String isoFinishDate, String remarks, int sent) {
         this.ref = ref;
         this.traceId = traceId;
         this.userId = userId;
@@ -39,7 +39,7 @@ public class mTrace {
         this.testedResult = testedResult;
         this.travelled = travelled;
         this.travelHistory = travelHistory;
-        this.recentContacts = recentContacts;
+//        this.recentContacts = recentContacts;
         this.sampleTaken = sampleTaken;
         this.sampleDate = sampleDate;
         this.sampleResult = sampleResult;
@@ -273,9 +273,9 @@ public class mTrace {
         return isoFinishDate;
     }
 
-    public String getRecentContacts() {
-        return recentContacts;
-    }
+//    public String getRecentContacts() {
+//        return recentContacts;
+//    }
 
     public String getRemarks() {
         return remarks;
@@ -325,9 +325,9 @@ public class mTrace {
         this.isoFinishDate = isoFinishDate;
     }
 
-    public void setRecentContacts(String recentContacts) {
-        this.recentContacts = recentContacts;
-    }
+//    public void setRecentContacts(String recentContacts) {
+//        this.recentContacts = recentContacts;
+//    }
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;

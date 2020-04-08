@@ -193,7 +193,7 @@ public class NetworkSchedulerService extends JobService implements ConnectivityR
                 map.put("tested_result", String.valueOf(trace.getTestedResult()));
                 map.put("travelled", String.valueOf(trace.getTravelled()));
                 map.put("travel_history", String.valueOf(trace.getTravelHistory()));
-                map.put("recent_contacts", String.valueOf(trace.getRecentContacts()));
+//                map.put("recent_contacts", String.valueOf(trace.getRecentContacts()));
                 map.put("sample_taken", String.valueOf(trace.getSampleTaken()));
                 map.put("sample_date", String.valueOf(trace.getSampleDate()));
                 map.put("testing_result", String.valueOf(trace.getSampleResult()));

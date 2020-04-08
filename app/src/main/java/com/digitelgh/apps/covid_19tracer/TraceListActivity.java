@@ -149,9 +149,9 @@ public class TraceListActivity extends AppCompatActivity {
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer intObj = (Integer) view.getTag();
-                String item = intObj.toString();
-
+//                Integer intObj = (Integer) view.getTag();
+                String item = (String) view.getTag();
+//                String item = intObj.toString();
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
                     arguments.putString(ContinueTraceFragment.ARG_ITEM_ID, item);
@@ -163,7 +163,7 @@ public class TraceListActivity extends AppCompatActivity {
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, ContinueTraceActivity.class);
-                    intent.putExtra(TraceDetailFragment.ARG_ITEM_ID, item);
+                    intent.putExtra(ContinueTraceFragment.ARG_ITEM_ID, item);
 
                     context.startActivity(intent);
                 }
@@ -173,21 +173,20 @@ public class TraceListActivity extends AppCompatActivity {
         private final View.OnClickListener mFollowUpButtonOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer intObj = (Integer) view.getTag();
-                String item = intObj.toString();
+                String item = (String) view.getTag();
 
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(FollowUpFormFragment.ARG_ITEM_ID, item);
-                    FollowUpFormFragment fragment = new FollowUpFormFragment();
+                    arguments.putString(FollowUpListFragment.ARG_ITEM_ID, item);
+                    FollowUpListFragment fragment = new FollowUpListFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
                             .replace(R.id.follow_up_form_container, fragment)
                             .commit();
                 } else {
                     Context context = view.getContext();
-                    Intent intent = new Intent(context, FollowUpActivity.class);
-                    intent.putExtra(FollowUpFormFragment.ARG_ITEM_ID, item);
+                    Intent intent = new Intent(context, FollowUpListActivity.class);
+                    intent.putExtra(FollowUpListFragment.ARG_ITEM_ID, item);
                     context.startActivity(intent);
                 }
             }
@@ -201,11 +200,11 @@ public class TraceListActivity extends AppCompatActivity {
 
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(ContinueTraceFragment.ARG_ITEM_ID, item);
-                    ContinueTraceFragment fragment = new ContinueTraceFragment();
+                    arguments.putString(TraceDetailFragment.ARG_ITEM_ID, item);
+                    TraceDetailFragment fragment = new TraceDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.trace_contacts_container, fragment)
+                            .replace(R.id.trace_detail_container, fragment)
                             .commit();
                 } else {
                     Context context = view.getContext();
@@ -239,10 +238,14 @@ public class TraceListActivity extends AppCompatActivity {
                 holder.mContentView.setText(rec.getString("f_name"));
                 holder.mIdView.setText(rec.getString("res_address"));
 
-                holder.itemView.setTag(position+1);
+                // here comes a hack
+                // TODO
+
+                holder.itemView.setTag(rec.toString());
                 holder.itemView.setOnClickListener(mOnClickListener);
                 // Follow up button handlers
-                holder.mFollowUpButton.setTag(position+1);
+                String id = Integer.toString(rec.getInt("id"));
+                holder.mFollowUpButton.setTag(id);
                 holder.mFollowUpButton.setOnClickListener(mFollowUpButtonOnClickListener);
                 // Continue trace button handlers
                 holder.mManageContactsButton.setTag(position+1);
